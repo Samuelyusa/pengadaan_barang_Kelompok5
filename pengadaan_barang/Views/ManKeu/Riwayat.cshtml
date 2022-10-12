@@ -1,0 +1,100 @@
+﻿@section CSS{
+    <!-- Custom styles for this page -->
+    <link href="~/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+    @model IEnumerable<Client.Models.Pengadaan>
+
+    @{
+    ViewData["Title"] = "Manager Keuangan | Riwayat";
+    Layout = "_LayoutMankeu";
+
+}
+
+<h6 class="mt-2 mb-2 font-weight-bold text-primary">Riwayat Persetujuan Pengadaan Barang</h6>
+
+<div class="card shadow mb-4">
+    @*<div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Divisi A</h6>
+    </div>*@
+    <div class="card-body">
+        <table id="dataTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nomor</th>
+                    <th scope="col">Produk</th>
+                    <th scope="col">Supplier</th>
+                    <th scope="col">Kuantitas</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Divisi</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PengaadanGuid)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdBarangNavigation.NamaProduk)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdSupplierNavigation.Nama)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Kuantitas)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Totals)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdDivisiNavigation.Nama)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdStatusNavigation.Name)
+                        </td>
+                        
+                    </tr>
+                }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal Deatil-->
+<div class="modal fade" id="detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Pengajuan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <!-- Page level plugins -->
+    <script src="~/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/js/demo/datatables-demo.js"></script>
+
+
+
+
+}

@@ -1,0 +1,155 @@
+﻿@section CSS{
+    <!-- Custom styles for this page -->
+    <link href="~/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+    @model Client.ViewModels.ViewModel
+@{
+    ViewData["Title"] = "Kabag | Buat SPB";
+    Layout = "_LayoutKabag";
+
+}
+@section Sidebar{
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-action="Index">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Pengadaan Barang</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active ">
+            <a class="nav-link" asp-action="Index">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+
+        <!-- Nav Item - Daftar Barang -->
+        <li class="nav-item ">
+            <a asp-action="Barang" class="nav-link">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Barang</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+
+        <!-- Nav Item - Daftar Supplier -->
+        <li class="nav-item">
+            <a asp-action="Supplier" class="nav-link">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Supplier</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+
+        <!-- Nav Item - Daftar Satuan -->
+        <li class="nav-item">
+            <a asp-action="Satuan" class="nav-link">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Satuan</span>
+            </a>
+        </li>
+
+                <!-- Divider -->
+        <hr class="sidebar-divider">
+
+
+        <!-- Nav Item - Daftar Divisi -->
+        <li class="nav-item">
+            <a asp-action="Divisi" class="nav-link">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Divisi</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Riwayat -->
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Riwayat</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
+}
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#pengajuan">
+    Buat Permohonan Pengadaan Barang
+</button>
+
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Buat Pengajuan Barang</h6>
+    </div>
+    <div class="card-body">
+        <form asp-action="CreateSPB">
+                    <div class="form-group">
+                        <label for="divisi"> ID</label>
+                        <input asp-for="@Model.pengadaan.Id" type="text" disabled class="form-control" id="id" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="divisi"> Nama Divisi</label>
+                    <select asp-for="@Model.pengadaan.IdDivisi" class="form-control" asp-items="@Model.Divisi"></select>
+
+
+                </div>
+                    <div class="form-group">
+                        <label for="divisi"> Pilih Barang</label>
+                        <select asp-for="@Model.pengadaan.IdBarang" class="form-control" asp-items="@Model.Produck"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier"> Pilih Supplier</label>
+                        <select asp-for="@Model.pengadaan.IdSupplier" class="form-control" asp-items="@Model.Supplier"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="divisi"> Kuantitas</label>
+                        <input asp-for="pengadaan.Kuantitas" type="number" class="form-control" id="kuantitas" aria-describedby="emailHelp">
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="@Model.pengadaan.IdStatus" type="hidden" value="1" class="form-control" id="id" aria-describedby="emailHelp">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary" value="CreateData">Submit</button>
+                </form>
+    </div>
+</div>
+
+
+
+@section Scripts{
+
+}

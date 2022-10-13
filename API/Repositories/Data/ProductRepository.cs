@@ -35,7 +35,7 @@ namespace API.Repositories.Data
 
         public Product Get(int id)
         {
-            var data = mycontext.Product.Where(a => a.Id == id).FirstOrDefault();
+            var data = mycontext.Product.Where(a => a.Id == id).Include(x => x.IdSupplierNavigation).Include(y => y.IdSatuanNavigation).FirstOrDefault();
             return data;
         }
 

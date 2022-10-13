@@ -131,8 +131,11 @@
     <script src="~/dist/js/main.min.js"></script>
     <script>
         $.ajax({
+           // contentType :"application/json",
             url: "https://localhost:44308/api/Product",
+
             type: "GET"
+            //data :JSON.stringify(o)
         }).done((result) => {
             console.log(result.data)
         }).fail((error) => {

@@ -1,12 +1,14 @@
 ﻿using API.Models;
 using API.Repositories.Data;
 using API.ViewModel;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAllOrigins")]
     public class ProductController : ControllerBase
     {
         ProductRepository productRepository;

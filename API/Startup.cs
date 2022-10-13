@@ -50,12 +50,15 @@ namespace API
                     }
                 });
             });
-            services.AddCors(c =>
+            services.AddCors(options =>
             {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
-                c.AddPolicy("AllowHeader", options => options.AllowAnyHeader());
-                c.AddPolicy("AllowMethod", options => options.AllowAnyMethod());
-
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                    });
             });
 
             #region Dependency Injection

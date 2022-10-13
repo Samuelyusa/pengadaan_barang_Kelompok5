@@ -61,16 +61,20 @@ namespace API.Repositories.Data
                 return result;
         }
 
-        public int Put(Pengadaan pengadaan)
+        public int Put(EditPengadaan pengadaan)
         {
             var data = Get(pengadaan.Id);
-                      if (data != null)
-                {
-                    data.IdSupplier = pengadaan.IdSupplier;
-                    data.Kuantitas = pengadaan.Kuantitas;
-                }
-                myContext.Pengadaan.Update(data);
-                var result = myContext.SaveChanges();
+
+
+            data.IdBarang = pengadaan.IdBarang;
+            data.IdSupplier = pengadaan.IdSupplier;
+            data.Kuantitas = pengadaan.Kuantitas;
+            data.Totals = pengadaan.Kuantitas;
+            data.IdStatus = pengadaan.IdStatus;
+            data.IdDivisi = pengadaan.IdDivisi;
+           
+            myContext.Pengadaan.Update(data);
+            var result = myContext.SaveChanges();
             return result;
 
         }

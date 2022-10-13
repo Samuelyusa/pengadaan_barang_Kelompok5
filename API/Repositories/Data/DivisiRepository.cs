@@ -33,7 +33,8 @@ namespace API.Repositories.Data
 
         public Divisi Get(int id)
         {
-            throw new System.NotImplementedException();
+            var data = mycontext.Divisi.Where(a => a.Id == id).FirstOrDefault();
+            return data;
         }
 
         public int Post(Divisi divisi)

@@ -40,7 +40,7 @@ namespace API.Controllers
 
         //UPDATE
         [HttpPut("{id}")]
-        public IActionResult Put(int id,Pengadaan Pengadaan)
+        public IActionResult Put(int id,EditPengadaan Pengadaan)
         {
             var result = pengadaanRepositiry.Put(Pengadaan);
             if (result > 0)

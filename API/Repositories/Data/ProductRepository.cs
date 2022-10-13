@@ -58,16 +58,14 @@ namespace API.Repositories.Data
         public int Put(EditProduct product)
         {
             var data = Get(product.Id);
-            
-            Product product2 = new Product()
-            {
-                NamaProduk = product.NamaProduk,
-                HargaProduct = product.HargaProduct,
-                StockProduct = product.StockProduct,
-                IdSatuan = product.IdSatuan,
-                IdSupplier = product.IdSupplier
-            };
-                mycontext.Product.Update(product2);
+
+
+            data.NamaProduk = product.NamaProduk;
+            data.HargaProduct = product.HargaProduct;
+            data.StockProduct = product.StockProduct;
+            data.IdSatuan = product.IdSatuan;
+            data.IdSupplier = product.IdSupplier;
+                mycontext.Product.Update(data);
                 var result = mycontext.SaveChanges();
             return result;
         }

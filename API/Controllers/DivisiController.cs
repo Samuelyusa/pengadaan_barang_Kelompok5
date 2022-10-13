@@ -1,11 +1,13 @@
 ﻿using API.Models;
 using API.Repositories.Data;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAllOrigins")]
     public class DivisiController : ControllerBase
     {
         DivisiRepository divisiRepository;

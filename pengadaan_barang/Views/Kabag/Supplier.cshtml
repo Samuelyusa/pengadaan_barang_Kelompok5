@@ -2,7 +2,8 @@
      <!-- Custom styles for this page -->
     <link href="~/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 }
-    @model IEnumerable<Client.Models.Supplier>
+   @* @model IEnumerable<Client.Models.Supplier>*@
+       @model Supplier
 @{
     ViewData["Title"] = "Kabag | Barang";
     Layout = "_LayoutKabag";
@@ -108,16 +109,16 @@
     
         <!-- Button trigger modal insert gajadi, grgr dalam satu layout cuman bisa make 1 model aja -->
         <!-- Button trigger modal insert -->
-        <a asp-action="CreateSupplier">
+        @*<a asp-action="CreateSupplier">*@
             <div>
-            <button type="button" class="btn btn-primary ml-4 mt-2 mb-2">
+            <button data-toggle="modal" data-target="#insert" type="button" class="btn btn-primary ml-4 mt-2 mb-2">
                 Tambah Data Supplier
             </button>
-            </div>
+           @* </div>*@
         </a>
 
 
-     <div class="card-body ">
+     @*<div class="card-body ">
          <table  class="table table-bordered table-striped"  id="dataTable1">
             <thead>
                 <tr>
@@ -189,10 +190,116 @@
                 }
             </tbody>
            </table>
+    </div>*@
+    <!-- Modal Insert Data -->
+    <div class="modal fade" id="insert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Supplier</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                        <div class="modal-body">
+                            <form asp-action="CreateSupplier">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="form-group">
+                                    <label asp-for="Nama" class="control-label">Nama Supplier</label>
+                                        <input asp-for="Nama" id="Nama" class="form-control" />
+                                    <span asp-validation-for="Nama" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Alamat" class="control-label">Alamat Supplier</label>
+                                    <input asp-for="Alamat" id="Alamat" class="form-control" />
+                                    <span asp-validation-for="Alamat" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Kota"  class="control-label"></label>
+                                    <input asp-for="Kota" id="Kota" class="form-control" />
+                                    <span asp-validation-for="Kota" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" id="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Telepon" class="control-label"></label>
+                                    <input asp-for="Telepon" id="=Telepon" class="form-control" />
+                                    <span asp-validation-for="Telepon" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <input onclick="insert()" type="submit" value="Save" class="btn btn-primary" />
+                                            <button type="button" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+
+            </div>
+        </div>
     </div>
 
+            <!-- Modal Edit Data -->
+            <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Data Supplier</h5>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id = "formedit">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input id="IdUpdt" type="hidden" class="form-control" />
+
+                                <div class="form-group">
+                                    <label asp-for="Nama" class="control-label">Nama Supplier</label>
+                                    <input asp-for="Nama" id="NamaUpdt" class="form-control" />
+                                    <span asp-validation-for="Nama" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Alamat" class="control-label">Alamat Supplier</label>
+                                    <input asp-for="Alamat" id="AlamatUpdt" class="form-control" />
+                                    <span asp-validation-for="Alamat" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Kota" class="control-label"></label>
+                                    <input asp-for="Kota" id="KotaUpdt" class="form-control" />
+                                    <span asp-validation-for="Kota" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" id="EmailUpdt" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Telepon" class="control-label"></label>
+                                    <input asp-for="Telepon" id="TeleponUpdt" class="form-control" />
+                                    <span asp-validation-for="Telepon" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <input type="button" onclick="update()" value="update" class="btn btn-success" data-dismiss="modal"ismi />
+                                        <button type="button" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
     <div class="card-body ">
-        <table class="table table-bordered table-striped" id="dataTable1">
+                <table class="table table-bordered table-striped" id="MyTableSupplier">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -205,7 +312,7 @@
 
                 </tr>
             </thead>
-            <tbody id="datasupplier">
+            <tbody id="tbodySW">
              
             </tbody>
         </table>
@@ -220,27 +327,7 @@
     <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
         <!-- Page level custom scripts -->
     <script src="~/js/demo/datatables-demo.js"></script>
-    <script>
-        $.ajax({
-            // contentType :"application/json",
-            url: "https://localhost:44308/api/Supplier",
-            type: "GET"
-            //data :JSON.stringify(o)
-        }).done((result) => {
-           text = ""
-            $.each(result.results, function (key, val) {
-
-                test += `<tr>
-                            <th scope="row">${key + 1}</th>
-                            <td>${val.name.charAt(0).toUpperCase() + val.name.slice(1)}</td>
-                            <td><button class="btn btn-success" onclick="detailChara('${val.url}')" data-bs-toggle="modal" data-bs-target="#modalDetailSW">Detail</button></td>
-                        </tr>`;
-            })
-            $("#data").html(test);
-
-        }).fail((error) => {
-            console.log(error);
-        })
+    <script src="~/js/supplier.js">
     </script>
 
 

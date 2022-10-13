@@ -266,9 +266,9 @@ namespace Client.Controllers
         // GET: KabagController
         public ActionResult Supplier()
         {
-            var data = myContext.Supplier.ToList();
+            
 
-            return View(data);
+            return View();
         }
         // GET: KabagController/CreateSupplier
         public ActionResult CreateSupplier()

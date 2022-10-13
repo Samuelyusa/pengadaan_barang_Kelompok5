@@ -61,12 +61,7 @@ namespace API
                     });
             });
 
-            #region Dependency Injection
-
-            services.AddScoped<AccountRepository>();
-
-
-            #endregion Dependency Injection
+            
             #region Dependency Injection
 
           
@@ -99,7 +94,12 @@ namespace API
             app.UseRouting();
 
             //app.UseAuthorization();
-            app.UseCors("AllowAllOrigin");
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
 
             app.UseEndpoints(endpoints =>
             {

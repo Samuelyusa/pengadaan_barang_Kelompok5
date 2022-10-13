@@ -190,6 +190,27 @@
             </tbody>
            </table>
     </div>
+
+    <div class="card-body ">
+        <table class="table table-bordered table-striped" id="dataTable1">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Supplier</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Nomor Telepon</th>
+                    <th scope="col">Kota</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody id="datasupplier">
+             
+            </tbody>
+        </table>
+    </div>
+
 </div>
 
 @section Scripts{
@@ -199,7 +220,28 @@
     <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
         <!-- Page level custom scripts -->
     <script src="~/js/demo/datatables-demo.js"></script>
+    <script>
+        $.ajax({
+            // contentType :"application/json",
+            url: "https://localhost:44308/api/Supplier",
+            type: "GET"
+            //data :JSON.stringify(o)
+        }).done((result) => {
+           text = ""
+            $.each(result.results, function (key, val) {
 
+                test += `<tr>
+                            <th scope="row">${key + 1}</th>
+                            <td>${val.name.charAt(0).toUpperCase() + val.name.slice(1)}</td>
+                            <td><button class="btn btn-success" onclick="detailChara('${val.url}')" data-bs-toggle="modal" data-bs-target="#modalDetailSW">Detail</button></td>
+                        </tr>`;
+            })
+            $("#data").html(test);
+
+        }).fail((error) => {
+            console.log(error);
+        })
+    </script>
 
 
 }

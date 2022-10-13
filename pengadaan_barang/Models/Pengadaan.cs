@@ -19,7 +19,8 @@ namespace Client.Models
         public int? IdBarang { get; set; }
         public Status IdStatusNavigation { get; set; }
         [ForeignKey("IdStatusNavigation")]
-        public int? IdSupplier { get; set; }
+        public int? IdStatus { get; set; }
+
         public int? Kuantitas { get; set; }
         public int? Totals { get; set; }
         public  Divisi IdDivisiNavigation { get; set; }
@@ -27,7 +28,8 @@ namespace Client.Models
         public int? IdDivisi { get; set; }
         public  Supplier IdSupplierNavigation { get; set; }
         [ForeignKey("IdSupplierNavigation")]
-        public int? IdStatus { get; set; }
+        public int? IdSupplier { get; set; }
+
 
     }
 }

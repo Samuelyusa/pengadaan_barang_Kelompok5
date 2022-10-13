@@ -16,15 +16,17 @@ namespace API.Models
         [Key]
         public int Id { get; set; }
         public string NamaProduk { get; set; }
+        public Satuan IdSatuanNavigation { get; set; }
+
         [ForeignKey("IdSatuanNavigation")]
         public int? IdSatuan { get; set; }
         public int? HargaProduct { get; set; }
         public int? StockProduct { get; set; }
+        
+
+        public  Supplier IdSupplierNavigation { get; set; }
         [ForeignKey("IdSupplierNavigation")]
         public int? IdSupplier { get; set; }
-
-        public  Satuan IdSatuanNavigation { get; set; }
-        public  Supplier IdSupplierNavigation { get; set; }
 
 
 

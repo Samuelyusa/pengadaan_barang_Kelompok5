@@ -1,4 +1,5 @@
-﻿using API.Context;
+﻿
+using API.Context;
 using API.Models;
 using API.ViewModel;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,7 @@ namespace API.Repositories.Data
                         responseLogin.role = data.Role.name;
                     };
                     return responseLogin;
-                } 
+                }
             }
             return null;
         }
@@ -67,17 +68,17 @@ namespace API.Repositories.Data
         {
             var data = myContext.User.Where(x => x.email.Equals(forgotPassword.email)).FirstOrDefault();
 
-            if(data != null)
+            if (data != null)
             {
                 var user = myContext.User.Where(x => x.id == data.id).FirstOrDefault();
-                
-                if (user!= null)
+
+                if (user != null)
                 {
-                    if(forgotPassword.newPassword == forgotPassword.confirmNewPassword)
+                    if (forgotPassword.newPassword == forgotPassword.confirmNewPassword)
                     {
                         user.password = HashPassword(forgotPassword.newPassword);
                         myContext.User.Update(user);
-                        
+
                         if (myContext.SaveChanges() > 0)
                         {
                             return true;

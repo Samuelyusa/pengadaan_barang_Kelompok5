@@ -8,6 +8,7 @@ using System;
 using API.Context;
 using API.Repositories.Data;
 using Microsoft.OpenApi.Models;
+using API.Models;
 
 namespace API
 {
@@ -49,11 +50,29 @@ namespace API
                     }
                 });
             });
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+                c.AddPolicy("AllowHeader", options => options.AllowAnyHeader());
+                c.AddPolicy("AllowMethod", options => options.AllowAnyMethod());
+
+            });
 
             #region Dependency Injection
 
             services.AddScoped<AccountRepository>();
 
+
+            #endregion Dependency Injection
+            #region Dependency Injection
+
+          
+            services.AddScoped<DivisiRepository>();
+            services.AddScoped<ProductRepository>();
+            services.AddScoped<SatuanRepository>();
+            services.AddScoped<AccountRepository>();
+            services.AddScoped<SupplierRepository>();
+            services.AddScoped<PengadaanRepositiry>();
 
             #endregion Dependency Injection
         }
@@ -77,6 +96,7 @@ namespace API
             app.UseRouting();
 
             //app.UseAuthorization();
+            app.UseCors("AllowAllOrigin");
 
             app.UseEndpoints(endpoints =>
             {

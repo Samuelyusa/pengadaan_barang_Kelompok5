@@ -7,14 +7,9 @@ using System.Collections.Generic;
 
 namespace Client.Models
 {
-    public partial class Supplier
+    public  class Supplier
     {
-        public Supplier()
-        {
-            Pengadaan = new HashSet<Pengadaan>();
-            Product = new HashSet<Product>();
-        }
-
+        
         public int Id { get; set; }
         public string Nama { get; set; }
         public string Alamat { get; set; }
@@ -22,7 +17,6 @@ namespace Client.Models
         public string Email { get; set; }
         public  int Telepon { get; set; }
 
-        public virtual ICollection<Pengadaan> Pengadaan { get; set; }
-        public virtual ICollection<Product> Product { get; set; }
+     
     }
 }

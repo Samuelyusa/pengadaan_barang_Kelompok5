@@ -7,16 +7,12 @@ using System.Collections.Generic;
 
 namespace Client.Models
 {
-    public partial class Satuan
+    public  class Satuan
     {
-        public Satuan()
-        {
-            Product = new HashSet<Product>();
-        }
+      
 
         public int Id { get; set; }
         public string Nama { get; set; }
 
-        public virtual ICollection<Product> Product { get; set; }
     }
 }

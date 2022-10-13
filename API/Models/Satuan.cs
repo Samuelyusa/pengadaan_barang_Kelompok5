@@ -5,11 +5,14 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace Client.Models
+namespace API.Models
 {
-    public partial class Role
+    public  class Satuan
     {
+      
+
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Nama { get; set; }
+
     }
 }

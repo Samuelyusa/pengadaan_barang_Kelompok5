@@ -31,11 +31,18 @@
                 </tr>
             </thead>
             <tbody >
+                @{
+                    int i = 1;
+                }
                 @foreach (var item in Model)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Id)
+                            @*@Html.DisplayFor(modelItem => item.Id)*@
+                            <span> @i </span>
+                            @{
+                                i++;
+                            }
 
                         </td>
                         <td>

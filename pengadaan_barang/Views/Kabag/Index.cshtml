@@ -5,7 +5,7 @@
     @model IEnumerable<Client.Models.Pengadaan>
         @*@model IEnumerable<Client.ViewModels.ViewModel>*@
 @{
-    ViewData["Title"] = "Kabag | Homepage";
+    ViewData["Title"] = "Kabag | Halaman Utama ";
     Layout = "_LayoutKabag";
 
 }
@@ -15,7 +15,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-action="Index">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <i class="fas fa-boxes"></i>
             </div>
             <div class="sidebar-brand-text mx-3">Pengadaan Barang</div>
         </a>
@@ -26,8 +26,8 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active ">
             <a class="nav-link" asp-action="Index">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span>Halaman Utama</span>
             </a>
         </li>
 
@@ -38,7 +38,7 @@
         <!-- Nav Item - Daftar Barang -->
         <li class="nav-item ">
             <a asp-action="Barang" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-archive" aria-hidden="true"></i>
                 <span>Barang</span>
             </a>
         </li>
@@ -50,8 +50,8 @@
         <!-- Nav Item - Daftar Supplier -->
         <li class="nav-item">
             <a asp-action="Supplier" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Supplier</span>
+                <i class="fa fa-industry" aria-hidden="true"></i>
+                <span>Pemasok</span>
             </a>
         </li>
 
@@ -62,7 +62,7 @@
         <!-- Nav Item - Daftar Satuan -->
         <li class="nav-item">
             <a asp-action="Satuan" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
                 <span>Satuan</span>
             </a>
         </li>
@@ -73,7 +73,7 @@
         <!-- Nav Item - Daftar Divisi -->
         <li class="nav-item">
             <a asp-action="Divisi" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-users" aria-hidden="true"></i>
                 <span>Divisi</span>
             </a>
         </li>
@@ -81,7 +81,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-        <!-- Nav Item - Riwayat -->
+@*        <!-- Nav Item - Riwayat -->
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-chart-area"></i>
@@ -90,7 +90,7 @@
         </li>
 
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider">*@
 
 
         <!-- Sidebar Toggler (Sidebar) -->
@@ -117,12 +117,12 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Produk</th>
-                    <th scope="col">Supplier</th>
+                    <th scope="col">Pemasok</th>
                     <th scope="col">Kuantitas</th>
                     <th scope="col">Total</th>
                     <th scope="col">Divisi</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody >
@@ -157,10 +157,10 @@
 
                         <td>
                             @if(item.IdStatus == 1){
-                                <a type="button" class="btn btn-info btn-sm" asp-action="EditSPB" asp-route-id="@item.Id">Edit</a>
+                                <a type="button" class="btn btn-info btn-sm" asp-action="EditSPB" asp-route-id="@item.Id">Ubah</a>
 
-                                <a type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#detail1" onClick="getDetails(@item.Id)">Details</a>
-                                <a type="button" class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#hapus">Delete</a>
+                                <a type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#detail1" onClick="getDetails(@item.Id)">Rincian</a>
+                                <a type="button" class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#hapus">Hapus</a>
 
                                 <!-- Modal Hapus Data -->
                                 <div class="modal fade" id="hapus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -178,8 +178,8 @@
                                                     <p>Apakah anda yakin ingin menghapus data ?</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary" asp-action="DeleteSPB" asp-route-id="@item.Id">Yes</button>
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary" asp-action="DeleteSPB" asp-route-id="@item.Id">Yakin</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                                                 </div>
                                             </form>
 
@@ -190,14 +190,14 @@
 
                             @if (item.IdStatus != 1)
                             {
-                                <a type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail" onclick="getDetails1(@item.Id)">Details</a>
+                                <a type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail" onclick="getDetails1(@item.Id)">Rincian</a>
                             }
                             <!-- Modal Detail Data -->
                             <div class="modal fade" id="detail1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Detail SPD</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Rincian SPD</h5>
 
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -243,7 +243,7 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                                         </div>
                                     </div>
                                 </div>
@@ -254,7 +254,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Detail SPD</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Rincian SPD</h5>
 
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -300,7 +300,7 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                                         </div>
                                     </div>
                                 </div>
@@ -321,7 +321,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detail Pengajuan</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Rincian Pengajuan</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -330,8 +330,8 @@
             
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+        <button type="button" class="btn btn-primary">Simpan Perubahan</button>
       </div>
     </div>
   </div>

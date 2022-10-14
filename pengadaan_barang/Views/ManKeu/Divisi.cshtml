@@ -129,7 +129,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Nama Divisi</th>
                         <th scope="col">Anggaran Tetap</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Aksi</th>
 
                     </tr>
                 </thead>
@@ -148,8 +148,8 @@
                             @Html.DisplayFor(modelItem => item.AnggaraanTetap)
                         </td>
                         <td>
-                            <a type="button" class="btn btn-info btn-sm" asp-action="EditDivisi" asp-route-id="@item.Id">Edit</a>
-                            <a type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus">Delete</a>
+                            <a type="button" class="btn btn-info btn-sm" asp-action="EditDivisi" asp-route-id="@item.Id">Ubah</a>
+                            <a type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus">Hapus</a>
                             <!-- Modal Hapus Data -->
                             <div class="modal fade" id="hapus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -166,8 +166,8 @@
                                                 <p>Apakah anda yakin ingin menghapus data divisi?</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary" asp-controller= "Mankeu"  asp-action="DeleteDivisi" asp-route-id="@item.Id">Yes</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary" asp-controller= "Mankeu"  asp-action="DeleteDivisi" asp-route-id="@item.Id">Yakin</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                                             </div>
                                         </form>
 

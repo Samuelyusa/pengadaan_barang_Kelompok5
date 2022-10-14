@@ -65,7 +65,7 @@ $(document).ready(function () {
             {
                 data: "id",
                 render: function (data, type, row) {
-                    return `<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPengadaan" onclick="getbyid('${data}')">Edit</button>`;
+                    return `<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPengadaan" onclick="getbyid('${data}')">Ubah</button>`;
                 }
             },
         ],
@@ -172,8 +172,8 @@ function updatePengadaan() {
         data: JSON.stringify(obj)
     }).done((result) => {
         Swal.fire(
-            'Good job!',
-            'You clicked the button!',
+            'Berhasil!',
+            'Data Pengadaan Berhasil Diubah!',
             'success'
         )
         $('#MyTableSupplier').DataTable().ajax.reload();

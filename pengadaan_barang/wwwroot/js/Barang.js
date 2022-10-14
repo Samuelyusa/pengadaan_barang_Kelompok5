@@ -27,7 +27,7 @@
             {
                 data: "id",
                 render: function (data, type, row) {
-                    return `<button class="btn btn-success" data-toggle="modal" data-target="#editBarang" onclick="getbyid('${data}')">Edit</button>`;
+                    return `<button class="btn btn-success" data-toggle="modal" data-target="#editBarang" onclick="getbyid('${data}')">Ubah</button>`;
                 }
             },
         ],
@@ -89,9 +89,9 @@ function updateBarang() {
         data: JSON.stringify(obj)
     }).done((result) => {
         Swal.fire(
-            'Success!',
-            'Data Berhasil di Update!',
-            'Sistem Pengadaan Barang'
+            'Berhasil!',
+            'Data Berhasil Diubah!',
+            'success'
         )
         $('#MyTableBarang').DataTable().ajax.reload();
     })

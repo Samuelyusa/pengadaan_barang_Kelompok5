@@ -14,7 +14,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-action="Index">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <i class="fas fa-boxes"></i>
             </div>
             <div class="sidebar-brand-text mx-3">Pengadaan Barang</div>
         </a>
@@ -25,8 +25,8 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active ">
             <a class="nav-link" asp-action="Index">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span>Halaman Utama</span>
             </a>
         </li>
 
@@ -37,7 +37,7 @@
         <!-- Nav Item - Daftar Barang -->
         <li class="nav-item ">
             <a asp-action="Barang" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-archive" aria-hidden="true"></i>
                 <span>Barang</span>
             </a>
         </li>
@@ -49,8 +49,8 @@
         <!-- Nav Item - Daftar Supplier -->
         <li class="nav-item">
             <a asp-action="Supplier" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Supplier</span>
+                <i class="fa fa-industry" aria-hidden="true"></i>
+                <span>Pemasok</span>
             </a>
         </li>
 
@@ -61,7 +61,7 @@
         <!-- Nav Item - Daftar Satuan -->
         <li class="nav-item">
             <a asp-action="Satuan" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
                 <span>Satuan</span>
             </a>
         </li>
@@ -73,7 +73,7 @@
         <!-- Nav Item - Daftar Divisi -->
         <li class="nav-item">
             <a asp-action="Divisi" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-users" aria-hidden="true"></i>
                 <span>Divisi</span>
             </a>
         </li>
@@ -81,7 +81,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-        <!-- Nav Item - Riwayat -->
+        @*<!-- Nav Item - Riwayat -->
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-chart-area"></i>
@@ -90,7 +90,7 @@
         </li>
 
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider">*@
 
 
         <!-- Sidebar Toggler (Sidebar) -->
@@ -102,22 +102,12 @@
 }
 
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#pengajuan">
-    Buat Permohonan Pengadaan Barang
-</button>
-
-
-
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Buat Pengajuan Barang</h6>
-    </div>
     <div class="card-body">
         <form asp-action="CreateSPB">
                     <div class="form-group">
-                        <label for="divisi"> ID</label>
-                        <input asp-for="@Model.pengadaan.Id" type="text" disabled class="form-control" id="id" aria-describedby="emailHelp">
+                        @*<label for="divisi"> ID</label>*@
+                        <input asp-for="@Model.pengadaan.Id" type="hidden" disabled class="form-control" id="id" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group">
                         <label for="divisi"> Nama Divisi</label>
@@ -130,7 +120,7 @@
                         <select asp-for="@Model.pengadaan.IdBarang" class="form-control" asp-items="@Model.Produck"></select>
                     </div>
                     <div class="form-group">
-                        <label for="supplier"> Pilih Supplier</label>
+                        <label for="supplier"> Pilih Pemasok</label>
                         <select asp-for="@Model.pengadaan.IdSupplier" class="form-control" asp-items="@Model.Supplier"></select>
                     </div>
                     <div class="form-group">
@@ -143,7 +133,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary" value="CreateData">Submit</button>
+                    <button type="submit" class="btn btn-primary" value="CreateData" onclick="kirimPengajuan()">Kirim Pengajuan</button>
                 </form>
     </div>
 </div>

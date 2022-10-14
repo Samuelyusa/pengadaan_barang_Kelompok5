@@ -79,7 +79,7 @@ $(document).ready(function () {
             {
                 data: "id",
                 render: function (data, type, row) {
-                    return `<button class="btn btn-success" data-toggle="modal" data-target="#edit" onclick="getbyid('${data}')">Edit</button>`;
+                    return `<button class="btn btn-success" data-toggle="modal" data-target="#edit" onclick="getbyid('${data}')">Ubah</button>`;
                 }
             },
         ],
@@ -143,9 +143,9 @@ function update() {
         data: JSON.stringify(obj)
     }).done((result) => {
         Swal.fire(
-            'Success!',
-            'Data Berhasil di Update!',
-            'Sistem Pengadaan Barang'
+            'Berhasil!',
+            'Data Berhasil Diubah!',
+            'success'
         )
         $('#MyTableSupplier').DataTable().ajax.reload();
     })

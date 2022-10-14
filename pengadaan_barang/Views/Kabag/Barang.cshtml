@@ -14,7 +14,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-action="Index">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <i class="fas fa-boxes"></i>
             </div>
             <div class="sidebar-brand-text mx-3">Pengadaan Barang</div>
         </a>
@@ -25,8 +25,8 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item  ">
             <a class="nav-link" asp-action="Index">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span>Halaman Utama</span>
             </a>
         </li>
 
@@ -37,7 +37,7 @@
         <!-- Nav Item - Daftar Barang -->
         <li class="nav-item active">
             <a asp-action="Barang" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-archive" aria-hidden="true"></i>
                 <span>Barang</span>
             </a>
         </li>
@@ -49,8 +49,8 @@
         <!-- Nav Item - Daftar Supplier -->
         <li class="nav-item">
             <a asp-action="Supplier" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Supplier</span>
+                <i class="fa fa-industry" aria-hidden="true"></i>
+                <span>Pemasok</span>
             </a>
         </li>
 
@@ -61,7 +61,7 @@
         <!-- Nav Item - Daftar Satuan -->
         <li class="nav-item">
             <a asp-action="Satuan" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
                 <span>Satuan</span>
             </a>
         </li>
@@ -73,7 +73,7 @@
         <!-- Nav Item - Daftar Divisi -->
         <li class="nav-item">
             <a asp-action="Divisi" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-users" aria-hidden="true"></i>
                 <span>Divisi</span>
             </a>
         </li>
@@ -81,7 +81,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-        <!-- Nav Item - Riwayat -->
+        @*<!-- Nav Item - Riwayat -->
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-chart-area"></i>
@@ -90,7 +90,7 @@
         </li>
 
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider">*@
 
 
         <!-- Sidebar Toggler (Sidebar) -->
@@ -125,10 +125,10 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Barang</th>
-                    <th scope="col">Stock</th>
+                    <th scope="col">Persediaan</th>
                     <th scope="col">Satuan</th>
                     <th scope="col">Harga</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
                 <tbody id="tbodySW">
@@ -141,7 +141,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Supplier</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Ubah Data Pemasok</h5>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -157,7 +157,7 @@
                                 <input id="UpdateNamaProduct" class="form-control" disabled />
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Jumlah Stock</label>
+                                <label class="control-label">Jumlah Persediaan</label>
                                 <input id="UpdateStockProduct" class="form-control" disabled />
                             </div>
                             <div class="form-group">
@@ -171,8 +171,8 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col">
-                                    <input type="button" onclick="updateBarang()" value="update" class="btn btn-success" data-dismiss="modal" />
-                                    <button type="button" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+                                    <input type="button" onclick="updateBarang()" value="Perbarui" class="btn btn-success" data-dismiss="modal" />
+                                    <button type="button" data-dismiss="modal" class="btn btn-danger">Kembali</button>
                                 </div>
                             </div>
                         </form>

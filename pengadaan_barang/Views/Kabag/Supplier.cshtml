@@ -5,7 +5,7 @@
    @* @model IEnumerable<Client.Models.Supplier>*@
        @model Supplier
 @{
-    ViewData["Title"] = "Kabag | Barang";
+    ViewData["Title"] = "Kabag | Pemasok";
     Layout = "_LayoutKabag";
 
 }
@@ -16,7 +16,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-action="Index">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <i class="fas fa-boxes"></i>
             </div>
             <div class="sidebar-brand-text mx-3">Pengadaan Barang</div>
         </a>
@@ -27,8 +27,8 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item ">
             <a class="nav-link" asp-action="Index">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span>Halaman Utama</span>
             </a>
         </li>
 
@@ -39,7 +39,7 @@
         <!-- Nav Item - Daftar Barang -->
         <li class="nav-item ">
             <a asp-action="Barang" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-archive" aria-hidden="true"></i>
                 <span>Barang</span>
             </a>
         </li>
@@ -51,8 +51,8 @@
         <!-- Nav Item - Daftar Supplier -->
         <li class="nav-item active">
             <a asp-action="Supplier" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Supplier</span>
+                <i class="fa fa-industry" aria-hidden="true"></i>
+                <span>Pemasok</span>
             </a>
         </li>
 
@@ -63,7 +63,7 @@
         <!-- Nav Item - Daftar Satuan -->
         <li class="nav-item">
             <a asp-action="Satuan" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
                 <span>Satuan</span>
             </a>
         </li>
@@ -74,7 +74,7 @@
         <!-- Nav Item - Daftar Divisi -->
         <li class="nav-item">
             <a asp-action="Divisi" class="nav-link">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fa fa-users" aria-hidden="true"></i>
                 <span>Divisi</span>
             </a>
         </li>
@@ -82,7 +82,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-        <!-- Nav Item - Riwayat -->
+@*        <!-- Nav Item - Riwayat -->
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-chart-area"></i>
@@ -91,7 +91,7 @@
         </li>
 
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider">*@
 
 
         <!-- Sidebar Toggler (Sidebar) -->
@@ -104,14 +104,14 @@
 
  <div class="card shadow mb-4" mt-4>
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Nama Supplier</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Nama Pemasok</h6>
     </div>
     
         <!-- Button trigger modal insert -->
         @*<a asp-action="CreateSupplier">*@
             <div>
             <button data-toggle="modal" data-target="#insert" type="button" class="btn btn-primary ml-4 mt-2 mb-2">
-                Tambah Data Supplier
+                Tambah Data Pemasok
             </button>
            @* </div>*@
         </a>
@@ -121,7 +121,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Supplier</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pemasok</h5>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -132,12 +132,12 @@
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                                 <div class="form-group">
-                                    <label asp-for="Nama" class="control-label">Nama Supplier</label>
+                                    <label asp-for="Nama" class="control-label">Nama Pemasok</label>
                                         <input asp-for="Nama" id="Nama" class="form-control" />
                                     <span asp-validation-for="Nama" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Alamat" class="control-label">Alamat Supplier</label>
+                                    <label asp-for="Alamat" class="control-label">Alamat Pemasok</label>
                                     <input asp-for="Alamat" id="Alamat" class="form-control" />
                                     <span asp-validation-for="Alamat" class="text-danger"></span>
                                 </div>
@@ -158,8 +158,8 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col">
-                                        <input onclick="insert()" type="submit" value="Save" class="btn btn-primary" />
-                                            <button type="button" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+                                        <input onclick="insert()" type="submit" value="Simpan" class="btn btn-success" />
+                                            <button type="button" data-dismiss="modal" class="btn btn-danger">Batal</button>
                                     </div>
                                 </div>
                             </form>
@@ -174,7 +174,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Data Supplier</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Ubah Data Pemasok</h5>
 
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -186,12 +186,12 @@
                                     <input id="IdUpdt" type="hidden" class="form-control" />
 
                                 <div class="form-group">
-                                    <label asp-for="Nama" class="control-label">Nama Supplier</label>
+                                    <label asp-for="Nama" class="control-label">Nama Pemasok</label>
                                     <input asp-for="Nama" id="NamaUpdt" class="form-control" />
                                     <span asp-validation-for="Nama" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Alamat" class="control-label">Alamat Supplier</label>
+                                    <label asp-for="Alamat" class="control-label">Alamat Pemasok</label>
                                     <input asp-for="Alamat" id="AlamatUpdt" class="form-control" />
                                     <span asp-validation-for="Alamat" class="text-danger"></span>
                                 </div>
@@ -212,8 +212,8 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col">
-                                        <input type="button" onclick="update()" value="update" class="btn btn-success" data-dismiss="modal"ismi />
-                                        <button type="button" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+                                        <input type="button" onclick="update()" value="Simpan Perubahan" class="btn btn-success" data-dismiss="modal"ismi />
+                                        <button type="button" data-dismiss="modal" class="btn btn-danger">Batal</button>
                                     </div>
                                 </div>
                             </form>
@@ -228,12 +228,12 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama Supplier</th>
+                    <th scope="col">Nama Pemasok</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">Email</th>
                     <th scope="col">Nomor Telepon</th>
                     <th scope="col">Kota</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Aksi</th>
 
                 </tr>
             </thead>

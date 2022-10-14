@@ -158,8 +158,8 @@
                         <td>
                             @if(item.IdStatus == 1){
                                 <a type="button" class="btn btn-info btn-sm" asp-action="EditSPB" asp-route-id="@item.Id">Edit</a>
-                                
-                                <a type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#detail">Details</a>
+
+                                <a type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#detail1" onClick="getDetails(@item.Id)">Details</a>
                                 <a type="button" class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#hapus">Delete</a>
 
                                 <!-- Modal Hapus Data -->
@@ -190,9 +190,66 @@
 
                             @if (item.IdStatus != 1)
                             {
-                                <a type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail">Details</a>
+                                <a type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail" onclick="getDetails1(@item.Id)">Details</a>
                             }
                             <!-- Modal Detail Data -->
+                            <div class="modal fade" id="detail1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Detail SPD</h5>
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Informasi Barang</p>
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Nama Barang</th>
+                                                        @*<th scope="col">Supplier</th>*@
+                                                        <th scope="col">Harga Satuan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td id="UpdatePengadaanNamaBarang"></td>
+                                                        @*<td id="UpdatePengadaanSupplier"></td>*@
+                                                        <td id="UpdatePengadaanHarga"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p>Informasi Supplier</p>
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        @*<th scope="col">Id</th>*@
+                                                        <th scope="col">Nama Supplier</th>
+                                                        <th scope="col">Alamat</th>
+                                                        <th scope="col">Kota</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        @*<th scope="row" id=""></th>*@
+                                                        <td id="UpdatePengadaanSupplier"></td>
+                                                        <td id="UpdatePengadaanSupplierAlamat"></td>
+                                                        <td id="UpdatePengadaanSupplierKota"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal Detail Data After Awaiting-->
                             <div class="modal fade" id="detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -209,15 +266,15 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Nama Barang</th>
-                                                        <th scope="col">Supplier</th>
+                                                       
                                                         <th scope="col">Harga Satuan</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>@item.IdBarangNavigation.NamaProduk</td>
-                                                        <td>@item.IdSupplierNavigation.Nama</td>
-                                                        <td>@item.IdBarangNavigation.HargaProduct</td>
+                                                        <td id="UpdatePengadaanNamaBarang1"></td>
+                                                       
+                                                        <td id="UpdatePengadaanHarga1"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -225,7 +282,7 @@
                                             <table class="table table-sm">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">No</th>
+                                                       
                                                         <th scope="col">Nama Supplier</th>
                                                         <th scope="col">Alamat</th>
                                                         <th scope="col">Kota</th>
@@ -233,10 +290,10 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>@item.IdSupplierNavigation.Nama</td>
-                                                        <td>@item.IdSupplierNavigation.Alamat</td>
-                                                        <td>@item.IdSupplierNavigation.Kota</td>
+                                                        
+                                                        <td id="UpdatePengadaanSupplier1"></td>
+                                                        <td id="UpdatePengadaanSupplierAlamat1"></td>
+                                                        <td id="UpdatePengadaanSupplierKota1"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -259,57 +316,6 @@
     </div>
 </div>
 
-
-
-@*<!-- Modal Pengajuan Barang X ga jadi, pindah ke halaman baru Create SPB-->
-<div class="modal fade" id="pengajuan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Buat Pengajuan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form asp-action="CreateSPB">
-                    <div class="form-group">
-                        <label for="divisi"> ID</label>
-                        <input asp-for="@Model.pengadaan.Id" type="text" disabled class="form-control" id="id" aria-describedby="emailHelp" >
-                    </div>
-                    <div class="form-group">
-                        <label for="divisi"> Nama Divisi</label>
-                        <input asp-for="@Model.pengadaan.IdDivisi" type="text" disabled class="form-control" id="id" aria-describedby="emailHelp" asp-value ="1">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="divisi"> Pilih Barang</label>
-                        <select asp-for="@Model.pengadaan.IdBarang" class="form-control" asp-items="@Model.Produck"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="supplier"> Pilih Supplier</label>
-                        <select asp-for="@Model.pengadaan.IdSupplier" class="form-control" asp-items="@Model.Supplier"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="divisi"> Kuantitas</label>
-                        <input asp-for="pengadaan.Kuantitas" type="number" class="form-control" id="kuantitas" aria-describedby="emailHelp">
-                    </div>
-                   
-                    <div class="form-group">
-                        <input asp-for="@Model.pengadaan.IdStatus" type="hidden" value="1" class="form-control" id="id" aria-describedby="emailHelp">
-                    </div>
-
-
-                    <button type="submit" class="btn btn-primary" value="CreateData">Submit</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>*@
-
 <!-- Modal Detail-->
 <div class="modal fade" id="detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -331,6 +337,104 @@
   </div>
 </div>
 
+@*
+<div class="card-body ">
+    <table class="table table-bordered table-striped" id="MyTablePengadaan">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama Barang</th>
+                <th scope="col">Supplier</th>
+                <th scope="col">Kuantitas</th>
+                <th scope="col">Total Harga</th>
+                <th scope="col">Divisi</th>
+                <th scope="col">Status Pengajuan</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="tbodySW">
+        </tbody>
+    </table>
+</div>*@
+
+@*<!-- Modal Edit Data Barang -->
+<div class="modal fade" id="editPengadaan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data Supplier</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form >
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label class="control-label">ID Pengajuan</label>
+                        <input id="UpdatePengadaanId" class="form-control" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Divisi</label>
+                        <input id="UpdatePengadaanDivisi" class="form-control" disabled />
+                    </div>
+                    @*<div class="form-group">
+                        <label class="control-label">Nama Barang</label>
+                        <input id="UpdatePengadaanNamaBarang" class="form-control" disabled />
+                    </div>*@
+                    @*<div class="form-group">
+                        <label class="control-label">Nama Barang</label>
+                        @*<input id="UpdatePengadaanNamaBarang" class="form-control" disabled />*@
+                       @* <select id="UpdatePengadaanNamaBarang" class="form-control">
+                            <option > Pilih Barang .. </option>
+                            <option value="1"> Pulpen</option>
+                            <option value="2"> Pensil</option>
+                            <option value="3"> Kertas A4 </option>
+                            <option value="4"> Map Kertas </option>
+                            <option value="5"> Map Plastik </option>
+                            <option value="6"> Buku Inventaris </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Supplier</label>**@
+                        @*<input id="UpdatePengadaanSupplier" class="form-control" />*@
+                       @* <select id="UpdatePengadaanSupplier" class="form-control">
+                            <option> Pilih Supplier ..</option>
+                            <option value="1"> PT. Angkasa Jaya</option>
+                            <option value="2"> PT. Istimewa</option>
+                            <option value="3"> PT. Maju Bersama </option>
+                            <option value="4"> PT. Untung Sejahtera </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Kuantitas</label>
+                        <input id="UpdatePengadaanKuantitas" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Total</label>
+                        <input id="UpdatePengadaanTotal" class="form-control" disabled />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label">Status Pngajuan</label>
+                        <input id="UpdatePengadaanStatus" class="form-control" />
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col">
+                            <input type="button" onclick="updatePengadaan()" value="update" class="btn btn-success" data-dismiss="modal" />
+                            <button type="button" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>*@
+
 @section Scripts{
 
         <!-- Page level plugins -->
@@ -338,6 +442,8 @@
     <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
         <!-- Page level custom scripts -->
     <script src="~/js/demo/datatables-demo.js"></script>
+    @*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
+    <script src="~/js/Pengadaan.js"></script>
 
 
 

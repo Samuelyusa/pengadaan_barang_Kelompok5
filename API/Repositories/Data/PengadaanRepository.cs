@@ -3,9 +3,11 @@ using API.Context;
 using API.Models;
 using API.Repositories.Interface;
 using API.ViewModel;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+//using System.Web.Mvc;
 
 namespace API.Repositories.Data
 {
@@ -38,7 +40,11 @@ namespace API.Repositories.Data
 
         public Pengadaan Get(int id)
         {
-             var data = myContext.Pengadaan.Where(a => a.Id == id).FirstOrDefault();
+             var data = myContext.Pengadaan.Where(a => a.Id == id).
+                        Include(x => x.IdSupplierNavigation).
+                        Include(y => y.IdBarangNavigation).
+                        Include(z => z.IdStatusNavigation).
+                        Include(p => p.IdDivisiNavigation).FirstOrDefault();
              return data;
         }
 
@@ -78,5 +84,16 @@ namespace API.Repositories.Data
             return result;
 
         }
+
+        //public JsonResult GetBarang()
+        //{
+        //    var data = myContext.Pengadaan.FirstOrDefault();
+
+        //    var barang = new List<string>();
+
+        //    barang.Add(data.IdBarangNavigation.NamaProduk);
+        //    //return Json(barang, JsonRequestBehavior.AllowGet);
+        //    return new JsonResult(barang, new Newtonsoft.Json.JsonSerializerSettings());
+        //}
     }
 }

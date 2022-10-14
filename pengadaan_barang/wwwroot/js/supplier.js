@@ -79,8 +79,7 @@ $(document).ready(function () {
             {
                 data: "id",
                 render: function (data, type, row) {
-                    return `<button class="btn btn-primary" onclick="detail('${data}')" data-toggle="modal" data-target="#edit">Detail</button>
-                            <button class="btn btn-success" data-toggle="modal" data-target="#edit" onclick="getbyid('${data}')">Edit</button>`;
+                    return `<button class="btn btn-success" data-toggle="modal" data-target="#edit" onclick="getbyid('${data}')">Edit</button>`;
                 }
             },
         ],

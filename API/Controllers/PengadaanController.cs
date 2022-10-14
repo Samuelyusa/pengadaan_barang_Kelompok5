@@ -1,8 +1,10 @@
-﻿using API.Models;
+﻿using API.Context;
+using API.Models;
 using API.Repositories.Data;
 using API.ViewModel;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace API.Controllers
 {
@@ -71,5 +73,16 @@ namespace API.Controllers
                 return Ok(new { message = "Berhasiil menghapus data", statusCode = 200 });
             return Ok(new { message = "Gagal menghapus data", statusCode = 200 });
         }
+
+        //[HttpGet]
+        //public IActionResult GetBarang()
+        //{
+        //    var data = pengadaanRepositiry.GetBarang();
+
+        //    if (data == null)
+        //        return Ok(new { message = "Data yang anda ambil TIDAK ADA", statusCode = 200, data = data });
+        //    return Ok(new { message = "Sukses mengambil data", statusCode = 200, data = data });
+        //}
+
     }
 }

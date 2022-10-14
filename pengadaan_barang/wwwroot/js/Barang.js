@@ -89,9 +89,9 @@ function updateBarang() {
         data: JSON.stringify(obj)
     }).done((result) => {
         Swal.fire(
-            'Good job!',
-            'You clicked the button!',
-            'success'
+            'Success!',
+            'Data Berhasil di Update!',
+            'Sistem Pengadaan Barang'
         )
         $('#MyTableBarang').DataTable().ajax.reload();
     })
